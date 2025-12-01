@@ -15,7 +15,7 @@ from urllib.request import urlretrieve
 from urllib.error import URLError
 
 VERSION = "1.0.0"
-DEFAULT_BASE_URL = "http://wxwidgets.com.br/wxwidgets"
+DEFAULT_BASE_URL = "http://wxwidgets.com.br:8899/wxwidgets"
 DEFAULT_INSTALL_DIR = Path.home() / ".local" / "wxwidgets"
 
 
