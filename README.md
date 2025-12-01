@@ -1,6 +1,7 @@
 # awx - Another wxWidgets Installer
 
-Instalador não oficial para compilações pré-compiladas do wxWidgets, inspirado no `aqt`.
+Instalador não oficial para compilações pré-compiladas
+do wxWidgets, inspirado no `aqt`.
 
 ## 🚀 Instalação do awx
 
@@ -37,7 +38,7 @@ scp -r wxwidgets-packages/* usuario@servidor.com:/var/www/wxwidgets/
 server {
     listen 80;
     server_name wxwidgets.seu-servidor.com;
-    
+
     location / {
         root /var/www/wxwidgets;
         autoindex on;
