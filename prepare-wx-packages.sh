@@ -23,24 +23,24 @@ declare -a packages
 package_dir() {
     local dir=$1
     local archive_name="${dir}.tar.gz"
-    
+
     if [ ! -d "$dir" ]; then
         echo "Aviso: Diretório $dir não encontrado, pulando..."
         return
     fi
-    
+
     echo -e "${GREEN}Empacotando: $dir → $archive_name${NC}"
-    
+
     # Cria o arquivo tar.gz
     tar -czf "$OUTPUT_DIR/$archive_name" "$dir"
-    
+
     # Obtém informações do pacote
     local size=$(du -h "$OUTPUT_DIR/$archive_name" | cut -f1)
     local hash=$(sha256sum "$OUTPUT_DIR/$archive_name" | cut -d' ' -f1)
-    
+
     echo "  Tamanho: $size"
     echo "  SHA256: ${hash:0:16}..."
-    
+
     # Adiciona ao array de pacotes
     packages+=("$archive_name:$size:$hash")
 }
@@ -66,7 +66,7 @@ package_dir "android-wx-3.2.4-RELEASE"
 # Gera arquivo manifest.json
 echo ""
 echo "Gerando manifest.json..."
-cat > "$MANIFEST_FILE" << 'EOF'
+cat >"$MANIFEST_FILE" <<'EOF'
 {
   "version": "1.0",
   "generated": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
@@ -75,15 +75,15 @@ EOF
 
 first=true
 for pkg_info in "${packages[@]}"; do
-    IFS=':' read -r name size hash <<< "$pkg_info"
-    
+    IFS=':' read -r name size hash <<<"$pkg_info"
+
     if [ "$first" = true ]; then
         first=false
     else
-        echo "," >> "$MANIFEST_FILE"
+        echo "," >>"$MANIFEST_FILE"
     fi
-    
-    cat >> "$MANIFEST_FILE" << EOF
+
+    cat >>"$MANIFEST_FILE" <<EOF
     {
       "name": "$name",
       "size": "$size",
@@ -92,7 +92,7 @@ for pkg_info in "${packages[@]}"; do
 EOF
 done
 
-cat >> "$MANIFEST_FILE" << 'EOF'
+cat >>"$MANIFEST_FILE" <<'EOF'
 
   ]
 }
@@ -109,4 +109,4 @@ echo "Para fazer upload para o servidor, execute:"
 echo "  rsync -avz $OUTPUT_DIR/ usuario@servidor:/path/to/wxwidgets/"
 echo ""
 echo "Ou com scp:"
-echo "  scp -r $OUTPUT_DIR/* usuario@servidor:/path/to/wxwidgets/"
+echo "  scp -r $OUTPUT_DIR/* wxwidgets.com.br:www/wxwidgets/"
