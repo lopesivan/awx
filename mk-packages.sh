@@ -20,8 +20,10 @@ mkdir -p wx-packpages
 declare -a PACKAGES=(
     "3.2.4:linux"
     "3.2.4:linux-cmake"
+    "3.2.4:android-arm64-v8a"
     "3.3.1:linux"
     "3.3.1:linux-cmake"
+    "3.3.1:android-arm64-v8a"
 )
 
 # Loop para compactar cada pacote
