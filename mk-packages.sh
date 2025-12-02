@@ -5,6 +5,7 @@
 # Cores para output
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+RED='\033[0;31m'
 NC='\033[0m'
 
 echo "========================================="
@@ -15,48 +16,61 @@ echo
 # Cria diretório de destino
 mkdir -p wx-packpages
 
-# Compacta os pacotes
+# Define os pacotes a serem criados
+declare -a PACKAGES=(
+    "3.2.4:linux"
+    "3.2.4:linux-cmake"
+    "3.3.1:linux"
+    "3.3.1:linux-cmake"
+)
+
+# Loop para compactar cada pacote
 echo -e "${YELLOW}Compactando pacotes...${NC}"
 echo
 
-V=3.2.4
-OS=linux
-script=build-${OS}-${V}.sh
-build=${OS}-wx-${V}
-source=wxWidgets-${V}-${OS}
-echo "Compactando ${OS}-wx-${V}.tar.gz"
-tar czf ${OS}-wx-${V}.tar.gz $script $build $source
-mv ${OS}-wx-${V}.tar.gz wx-packpages
+for pkg in "${PACKAGES[@]}"; do
+    IFS=':' read -r V OS <<<"$pkg"
 
-V=3.2.4
-OS=linux-cmake
-script=build-${OS}-${V}.sh
-build=${OS}-wx-${V}
-source=wxWidgets-${V}-${OS}
-echo "Compactando ${OS}-wx-${V}.tar.gz"
-tar czf ${OS}-wx-${V}.tar.gz $script $build $source
-mv ${OS}-wx-${V}.tar.gz wx-packpages
+    script="build-${OS}-${V}.sh"
+    build="${OS}-wx-${V}"
+    source="wxWidgets-${V}-${OS}"
+    tarfile="${OS}-wx-${V}.tar.gz"
 
-V=3.3.1
-OS=linux
-script=build-${OS}-${V}.sh
-build=${OS}-wx-${V}
-source=wxWidgets-${V}-${OS}
-echo "Compactando ${OS}-wx-${V}.tar.gz"
-tar czf ${OS}-wx-${V}.tar.gz $script $build $source
-mv ${OS}-wx-${V}.tar.gz wx-packpages
+    # Verifica se o tar já existe
+    if [ -f "wx-packpages/${tarfile}" ]; then
+        echo -e "${GREEN}✓ ${tarfile} já existe, pulando...${NC}"
+        continue
+    fi
 
-V=3.3.1
-OS=linux-cmake
-script=build-${OS}-${V}.sh
-build=${OS}-wx-${V}
-source=wxWidgets-${V}-${OS}
-echo "Compactando ${OS}-wx-${V}.tar.gz"
-tar czf ${OS}-wx-${V}.tar.gz $script $build $source
-mv ${OS}-wx-${V}.tar.gz wx-packpages
+    # Verifica se os componentes existem
+    missing=false
+    for component in "$script" "$build" "$source"; do
+        if [ ! -e "$component" ]; then
+            echo -e "${RED}✗ ${component} não encontrado, pulando ${tarfile}${NC}"
+            missing=true
+            break
+        fi
+    done
 
-echo
-echo -e "${GREEN}✓ Pacotes compactados${NC}"
+    if [ "$missing" = true ]; then
+        continue
+    fi
+
+    # Compacta o pacote
+    echo -e "${YELLOW}Compactando ${tarfile}...${NC}"
+    tar czf "${tarfile}" "$script" "$build" "$source"
+
+    if [ $? -eq 0 ]; then
+        mv "${tarfile}" wx-packpages/
+        size=$(du -h "wx-packpages/${tarfile}" | cut -f1)
+        echo -e "${GREEN}✓ ${tarfile} criado (${size})${NC}"
+    else
+        echo -e "${RED}✗ Erro ao criar ${tarfile}${NC}"
+    fi
+    echo
+done
+
+echo -e "${GREEN}✓ Compactação concluída${NC}"
 echo
 
 # Gera o manifest.json
@@ -66,32 +80,26 @@ current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 cd wx-packpages
 
-cat >manifest.json <<'EOF_START'
+# Início do JSON
+cat >manifest.json <<EOF
 {
   "version": "1.0",
-  "generated": "
-EOF_START
-
-echo -n "$current_date" >>manifest.json
-
-cat >>manifest.json <<'EOF_MIDDLE'
-",
+  "generated": "$current_date",
   "packages": [
-EOF_MIDDLE
-
-# Array com os pacotes na ordem correta
-packages=(
-    "linux-wx-3.2.4.tar.gz:build-linux-3.2.4.sh:linux-wx-3.2.4:wxWidgets-3.2.4-linux"
-    "linux-wx-3.3.1.tar.gz:build-linux-3.3.1.sh:linux-wx-3.3.1:wxWidgets-3.3.1-linux"
-    "linux-cmake-wx-3.2.4.tar.gz:build-linux-cmake-3.2.4.sh:linux-cmake-wx-3.2.4:wxWidgets-3.2.4-linux-cmake"
-    "linux-cmake-wx-3.3.1.tar.gz:build-linux-cmake-3.3.1.sh:linux-cmake-wx-3.3.1:wxWidgets-3.3.1-linux-cmake"
-)
+EOF
 
 first=true
-for pkg in "${packages[@]}"; do
-    IFS=':' read -r name script install_dir source_dir <<<"$pkg"
+for pkg in "${PACKAGES[@]}"; do
+    IFS=':' read -r V OS <<<"$pkg"
 
+    script="build-${OS}-${V}.sh"
+    install_dir="${OS}-wx-${V}"
+    source_dir="wxWidgets-${V}-${OS}"
+    name="${OS}-wx-${V}.tar.gz"
+
+    # Verifica se o arquivo existe
     if [ ! -f "$name" ]; then
+        echo -e "${YELLOW}⚠ ${name} não encontrado, não será incluído no manifest${NC}"
         continue
     fi
 
@@ -106,7 +114,7 @@ for pkg in "${packages[@]}"; do
     size=$(du -h "$name" | cut -f1)
 
     # Adiciona entrada ao JSON
-    cat >>manifest.json <<EOF_ENTRY
+    cat >>manifest.json <<EOF
     {
       "name": "$name",
       "size": "$size",
@@ -117,15 +125,15 @@ for pkg in "${packages[@]}"; do
         "source_dir": "$source_dir"
       }
     }
-EOF_ENTRY
+EOF
 done
 
 # Fecha o JSON
-cat >>manifest.json <<'EOF_END'
+cat >>manifest.json <<'EOF'
 
   ]
 }
-EOF_END
+EOF
 
 cd ..
 
@@ -136,3 +144,5 @@ echo "========================================="
 echo "Arquivos gerados em wx-packpages/:"
 ls -lh wx-packpages/
 echo "========================================="
+
+exit 0
