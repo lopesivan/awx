@@ -324,13 +324,8 @@ class AWXInstaller:
         print(f"Extraindo para {self.install_dir}...")
         try:
             with tarfile.open(temp_file, 'r:gz') as tar:
-                # Extrai com strip-components para remover diretório raiz, se existir
-                members = tar.getmembers()
-                for member in members:
-                    parts = member.name.split('/', 1)
-                    if len(parts) > 1:
-                        member.name = parts[1]
-                        tar.extract(member, self.install_dir)
+                # Extração simples, equivalente a: tar xvzf file.tar.gz -C <install_dir>
+                tar.extractall(path=self.install_dir)
 
             temp_file.unlink()
 
