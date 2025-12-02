@@ -126,14 +126,7 @@ class AWXInstaller:
         print(f"Extraindo para {self.install_dir}...")
         try:
             with tarfile.open(temp_file, 'r:gz') as tar:
-                # Extrai com strip-components para remover o diretório wxwidgets-package/
-                members = tar.getmembers()
-                for member in members:
-                    # Remove o primeiro componente do path (wxwidgets-package/)
-                    parts = member.name.split('/', 1)
-                    if len(parts) > 1:
-                        member.name = parts[1]
-                        tar.extract(member, self.install_dir)
+                tar.extractall(self.install_dir)
 
             # Remove o arquivo temporário
             temp_file.unlink()
