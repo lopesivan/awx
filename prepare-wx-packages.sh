@@ -134,9 +134,18 @@ package_build \
     "linux-cmake-wx-3.2.4.tar.gz"
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Android 3.2.4 (Release)
+# Linux CMake 3.3.1
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 package_build \
+    "build-linux-cmake-3.3.1.sh" \
+    "linux-cmake-wx-3.3.1" \
+    "wxWidgets-3.3.1-linux-cmake" \
+    "linux-cmake-wx-3.3.1.tar.gz"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Android 3.2.4 (Release)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo package_build \
     "build-android-3.2.4.sh" \
     "android-wx-3.2.4-RELEASE" \
     "wxWidgets-3.2.4-android" \
@@ -145,7 +154,7 @@ package_build \
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Android 3.2.4 (Debug)
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-package_build \
+echo package_build \
     "build-android-3.2.4-debug.sh" \
     "android-wx-3.2.4-DEBUG" \
     "wxWidgets-3.2.4-android-debug" \
@@ -154,7 +163,7 @@ package_build \
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Android 3.3.1 (Release)
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-package_build \
+echo package_build \
     "build-android-3.3.1.sh" \
     "android-wx-3.3.1" \
     "wxWidgets-3.3.1-android" \
@@ -163,7 +172,7 @@ package_build \
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Android 3.3.1 (Debug)
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-package_build \
+echo package_build \
     "build-android-3.3.1-debug.sh" \
     "android-debug-wx-3.3.1" \
     "wxWidgets-3.3.1-android-debug" \
