@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "generated": "2025-12-02T05:30:54Z",
+  "packages": [
+    {
+      "name": "linux-wx-3.2.4.tar.gz",
+      "size": "68M",
+      "sha256": "00fc80994e675bc83337086f3d3d5ae5a7174a6d3169549d48270d7a5dc22a7f",
+      "components": {
+        "script": "build-linux-3.2.4.sh",
+        "install_dir": "linux-wx-3.2.4",
+        "source_dir": "wxWidgets-3.2.4-linux"
+      }
+    }
+,
+    {
+      "name": "linux-cmake-wx-3.2.4.tar.gz",
+      "size": "384M",
+      "sha256": "bfd3160a0ab0ca595d1dd50fea50d3e4825eee855321f6f3a9a98701315b6f1f",
+      "components": {
+        "script": "build-linux-cmake-3.2.4.sh",
+        "install_dir": "linux-cmake-wx-3.2.4",
+        "source_dir": "wxWidgets-3.2.4-linux-cmake"
+      }
+    }
+,
+    {
+      "name": "linux-wx-3.3.1.tar.gz",
+      "size": "75M",
+      "sha256": "8e78909c193c966bf7ff3e4eec9f4ed5232a7f233f78bcb7bcc47cca82120c86",
+      "components": {
+        "script": "build-linux-3.3.1.sh",
+        "install_dir": "linux-wx-3.3.1",
+        "source_dir": "wxWidgets-3.3.1-linux"
+      }
+    }
+,
+    {
+      "name": "android-arm64-v8a-wx-3.2.4.tar.gz",
+      "size": "462M",
+      "sha256": "0b7b7a73c7a87fa477935529d275e4727fb474530cb83266782c454f3aacd9b1",
+      "components": {
+        "script": "build-android-arm64-v8a-3.2.4.sh",
+        "install_dir": "android-arm64-v8a-wx-3.2.4",
+        "source_dir": "wxWidgets-3.2.4-android-arm64-v8a"
+      }
+    }
+,
+    {
+      "name": "android-arm64-v8a-wx-3.3.1.tar.gz",
+      "size": "581M",
+      "sha256": "a637933ffa28c80246d76db6c0ebbf74f1b8dcb6d7c3b4ca1f526a3e73ff56c7",
+      "components": {
+        "script": "build-android-arm64-v8a-3.3.1.sh",
+        "install_dir": "android-arm64-v8a-wx-3.3.1",
+        "source_dir": "wxWidgets-3.3.1-android-arm64-v8a"
+      }
+    }
+,
+    {
+      "name": "linux-cmake-wx-3.3.1.tar.gz",
+      "size": "389M",
+      "sha256": "5bbeaaa8c5446513d41ff7076f01185c78ff8d4e51c76a2d953ddbdc7dca92db",
+      "components": {
+        "script": "build-linux-cmake-3.3.1.sh",
+        "install_dir": "linux-cmake-wx-3.3.1",
+        "source_dir": "wxWidgets-3.3.1-linux-cmake"
+      }
+    }
+
+  ]
+}
