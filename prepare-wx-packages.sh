@@ -106,77 +106,49 @@ package_build() {
 echo ""
 echo -e "${BLUE}Iniciando empacotamento...${NC}"
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Linux 3.2.4
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+V=3.2.4
 package_build \
-    "build-linux-3.2.4.sh" \
-    "linux-wx-3.2.4" \
-    "wxWidgets-3.2.4-linux" \
-    "linux-wx-3.2.4.tar.gz"
-
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Linux 3.3.1
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    "build-linux-${V}.sh" \
+    "linux-wx-${V}" \
+    "wxWidgets-${V}-linux" \
+    "linux-wx-${V}.tar.gz"
 package_build \
-    "build-linux-3.3.1.sh" \
-    "linux-wx-3.3.1" \
-    "wxWidgets-3.3.1-linux" \
-    "linux-wx-3.3.1.tar.gz"
-
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Linux CMake 3.2.4
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    "build-windows-${V}.sh" \
+    "windows-wx-${V}" \
+    "wxWidgets-${V}-windows" \
+    "windows-wx-${V}.tar.gz"
 package_build \
-    "build-linux-cmake-3.2.4.sh" \
-    "linux-cmake-wx-3.2.4" \
-    "wxWidgets-3.2.4-linux-cmake" \
-    "linux-cmake-wx-3.2.4.tar.gz"
-
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Linux CMake 3.3.1
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    "build-linux-cmake-${V}.sh" \
+    "linux-cmake-wx-${V}" \
+    "wxWidgets-${V}-linux-cmake" \
+    "linux-cmake-wx-${V}.tar.gz"
 package_build \
-    "build-linux-cmake-3.3.1.sh" \
-    "linux-cmake-wx-3.3.1" \
-    "wxWidgets-3.3.1-linux-cmake" \
-    "linux-cmake-wx-3.3.1.tar.gz"
+    "build-android-arm64-v8a-${V}.sh" \
+    "android-arm64-v8a-wx-${V}" \
+    "wxWidgets-${V}-android-arm64-v8a" \
+    "android-arm64-v8a-${V}.tar.gz"
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Android 3.2.4 (Release)
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo package_build \
-    "build-android-3.2.4.sh" \
-    "android-wx-3.2.4-RELEASE" \
-    "wxWidgets-3.2.4-android" \
-    "android-wx-3.2.4-RELEASE.tar.gz"
-
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Android 3.2.4 (Debug)
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo package_build \
-    "build-android-3.2.4-debug.sh" \
-    "android-wx-3.2.4-DEBUG" \
-    "wxWidgets-3.2.4-android-debug" \
-    "android-wx-3.2.4-DEBUG.tar.gz"
-
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Android 3.3.1 (Release)
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo package_build \
-    "build-android-3.3.1.sh" \
-    "android-wx-3.3.1" \
-    "wxWidgets-3.3.1-android" \
-    "android-wx-3.3.1-RELEASE.tar.gz"
-
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# Android 3.3.1 (Debug)
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-echo package_build \
-    "build-android-3.3.1-debug.sh" \
-    "android-debug-wx-3.3.1" \
-    "wxWidgets-3.3.1-android-debug" \
-    "android-wx-3.3.1-DEBUG.tar.gz"
+V=3.3.1
+package_build \
+    "build-linux-${V}.sh" \
+    "linux-wx-${V}" \
+    "wxWidgets-${V}-linux" \
+    "linux-wx-${V}.tar.gz"
+package_build \
+    "build-windows-${V}.sh" \
+    "windows-wx-${V}" \
+    "wxWidgets-${V}-windows" \
+    "windows-wx-${V}.tar.gz"
+package_build \
+    "build-linux-cmake-${V}.sh" \
+    "linux-cmake-wx-${V}" \
+    "wxWidgets-${V}-linux-cmake" \
+    "linux-cmake-wx-${V}.tar.gz"
+package_build \
+    "build-android-arm64-v8a-${V}.sh" \
+    "android-arm64-v8a-wx-${V}" \
+    "wxWidgets-${V}-android-arm64-v8a" \
+    "android-arm64-v8a-${V}.tar.gz"
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Gera arquivo manifest.json
