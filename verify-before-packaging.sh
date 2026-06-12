@@ -147,47 +147,49 @@ verify_set() {
 # Verificações
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+V=3.2.4
 verify_set \
-    "build-linux-3.2.4.sh" \
-    "linux-wx-3.2.4" \
-    "wxWidgets-3.2.4-linux" \
-    "Linux 3.2.4"
+    "build-linux-${V}.sh" \
+    "linux-wx-${V}" \
+    "wxWidgets-${V}-linux" \
+    "Linux ${V}"
+verify_set \
+    "build-windows-${V}.sh" \
+    "windows-wx-${V}" \
+    "wxWidgets-${V}-windows" \
+    "Windows ${V}"
+verify_set \
+    "build-linux-cmake-${V}.sh" \
+    "linux-cmake-wx-${V}" \
+    "wxWidgets-${V}-linux-cmake" \
+    "Linux CMake ${V}"
+verify_set \
+    "build-android-arm64-v8a-${V}.sh" \
+    "android-arm64-v8a-wx-${V}" \
+    "wxWidgets-${V}-android-arm64-v8a" \
+    "Android arm64 v8a ${V}"
 
+V=3.3.1
 verify_set \
-    "build-linux-3.3.1.sh" \
-    "linux-wx-3.3.1" \
-    "wxWidgets-3.3.1-linux" \
-    "Linux 3.3.1"
-
+    "build-linux-${V}.sh" \
+    "linux-wx-${V}" \
+    "wxWidgets-${V}-linux" \
+    "Linux ${V}"
 verify_set \
-    "build-linux-cmake-3.2.4.sh" \
-    "linux-cmake-wx-3.2.4" \
-    "wxWidgets-3.2.4-linux-cmake" \
-    "Linux CMake 3.2.4"
-
+    "build-windows-${V}.sh" \
+    "windows-wx-${V}" \
+    "wxWidgets-${V}-windows" \
+    "Windows ${V}"
 verify_set \
-    "build-android-3.2.4.sh" \
-    "android-wx-3.2.4-RELEASE" \
-    "wxWidgets-3.2.4-android" \
-    "Android 3.2.4 Release"
-
+    "build-linux-cmake-${V}.sh" \
+    "linux-cmake-wx-${V}" \
+    "wxWidgets-${V}-linux-cmake" \
+    "Linux CMake ${V}"
 verify_set \
-    "build-android-3.2.4-debug.sh" \
-    "android-wx-3.2.4-DEBUG" \
-    "wxWidgets-3.2.4-android-debug" \
-    "Android 3.2.4 Debug"
-
-verify_set \
-    "build-android-3.3.1.sh" \
-    "android-wx-3.3.1" \
-    "wxWidgets-3.3.1-android" \
-    "Android 3.3.1 Release"
-
-verify_set \
-    "build-android-3.3.1-debug.sh" \
-    "android-debug-wx-3.3.1" \
-    "wxWidgets-3.3.1-android-debug" \
-    "Android 3.3.1 Debug"
+    "build-android-arm64-v8a-${V}.sh" \
+    "android-arm64-v8a-wx-${V}" \
+    "wxWidgets-${V}-android-arm64-v8a" \
+    "Android arm64 v8a ${V}"
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Resumo final
