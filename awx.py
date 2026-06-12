@@ -96,11 +96,11 @@ class AWXInstaller:
             expected_name = f"windows-wx-{version}.tar.gz"
 
         elif platform == "android":
-            # Agora a variante é a ABI (ex: arm64-v8a)
             if not variant:
                 print("Para android é necessário informar a ABI (ex: arm64-v8a).")
                 return None
-            expected_name = f"android-{variant}-wx-{version}.tar.gz"
+            # era: android-{variant}-wx-{version}.tar.gz
+            expected_name = f"android-{variant}-{version}.tar.gz"
 
         else:
             print(f"Plataforma inválida: {platform}")
@@ -135,7 +135,6 @@ class AWXInstaller:
     # Listagens
     # ---------------------------
     def list_available(self):
-        """Lista compilações disponíveis baseado no manifest."""
         manifest = self._load_manifest()
         if manifest is None:
             # Fallback antigo, caso não haja manifest
@@ -145,7 +144,7 @@ class AWXInstaller:
             print("  - linux 3.3.1")
             print("  - linux-cmake 3.2.4")
             print("  - linux-cmake 3.3.1")
-            print("\nWindows:")
+            print("\nWindows:")          # ← tem windows aqui
             print("  - windows 3.2.4")
             print("  - windows 3.3.1")
             print("\nAndroid:")
