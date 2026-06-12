@@ -1,11 +1,11 @@
 {
   "version": "1.0",
-  "generated": "2025-12-02T05:30:54Z",
+  "generated": "2026-05-12T19:42:52Z",
   "packages": [
     {
       "name": "linux-wx-3.2.4.tar.gz",
       "size": "68M",
-      "sha256": "00fc80994e675bc83337086f3d3d5ae5a7174a6d3169549d48270d7a5dc22a7f",
+      "sha256": "eaac4eb259b87ee597b777dbd3b4be239cb3f3bf06b57ce69a30c8c013495b71",
       "components": {
         "script": "build-linux-3.2.4.sh",
         "install_dir": "linux-wx-3.2.4",
@@ -14,9 +14,20 @@
     }
 ,
     {
+      "name": "windows-wx-3.2.4.tar.gz",
+      "size": "92M",
+      "sha256": "0b2ca433349ca0b7b0b25a9adc9ab8c47d82c390b8329058a7b3f0a5bd1184cb",
+      "components": {
+        "script": "build-windows-3.2.4.sh",
+        "install_dir": "windows-wx-3.2.4",
+        "source_dir": "wxWidgets-3.2.4-windows"
+      }
+    }
+,
+    {
       "name": "linux-cmake-wx-3.2.4.tar.gz",
       "size": "384M",
-      "sha256": "bfd3160a0ab0ca595d1dd50fea50d3e4825eee855321f6f3a9a98701315b6f1f",
+      "sha256": "5b4f9f0c5b1426d31f260284b27145cba0302a5d50aeb36b0d5d99f810bda6a2",
       "components": {
         "script": "build-linux-cmake-3.2.4.sh",
         "install_dir": "linux-cmake-wx-3.2.4",
@@ -25,20 +36,9 @@
     }
 ,
     {
-      "name": "linux-wx-3.3.1.tar.gz",
-      "size": "75M",
-      "sha256": "8e78909c193c966bf7ff3e4eec9f4ed5232a7f233f78bcb7bcc47cca82120c86",
-      "components": {
-        "script": "build-linux-3.3.1.sh",
-        "install_dir": "linux-wx-3.3.1",
-        "source_dir": "wxWidgets-3.3.1-linux"
-      }
-    }
-,
-    {
-      "name": "android-arm64-v8a-wx-3.2.4.tar.gz",
+      "name": "android-arm64-v8a-3.2.4.tar.gz",
       "size": "462M",
-      "sha256": "0b7b7a73c7a87fa477935529d275e4727fb474530cb83266782c454f3aacd9b1",
+      "sha256": "c3eebe296a09d866dfe16e3128d017c0394a41287d6f5a8457e39556bcc23d5f",
       "components": {
         "script": "build-android-arm64-v8a-3.2.4.sh",
         "install_dir": "android-arm64-v8a-wx-3.2.4",
@@ -47,24 +47,46 @@
     }
 ,
     {
-      "name": "android-arm64-v8a-wx-3.3.1.tar.gz",
-      "size": "581M",
-      "sha256": "a637933ffa28c80246d76db6c0ebbf74f1b8dcb6d7c3b4ca1f526a3e73ff56c7",
+      "name": "linux-wx-3.3.1.tar.gz",
+      "size": "75M",
+      "sha256": "5cbfd08ca72d318cbd1ed5adc70dfbeaf926ac6d6f95027029293bc5e7ab07de",
       "components": {
-        "script": "build-android-arm64-v8a-3.3.1.sh",
-        "install_dir": "android-arm64-v8a-wx-3.3.1",
-        "source_dir": "wxWidgets-3.3.1-android-arm64-v8a"
+        "script": "build-linux-3.3.1.sh",
+        "install_dir": "linux-wx-3.3.1",
+        "source_dir": "wxWidgets-3.3.1-linux"
+      }
+    }
+,
+    {
+      "name": "windows-wx-3.3.1.tar.gz",
+      "size": "100M",
+      "sha256": "4a964464c692c177408078362761f983040f41c7bed98032bbc0fb89d0c016e3",
+      "components": {
+        "script": "build-windows-3.3.1.sh",
+        "install_dir": "windows-wx-3.3.1",
+        "source_dir": "wxWidgets-3.3.1-windows"
       }
     }
 ,
     {
       "name": "linux-cmake-wx-3.3.1.tar.gz",
       "size": "389M",
-      "sha256": "5bbeaaa8c5446513d41ff7076f01185c78ff8d4e51c76a2d953ddbdc7dca92db",
+      "sha256": "669bdbf7ee6fc9fd2ab40c8a5dbd0c1e7092eea9e140ce5034050410804a5203",
       "components": {
         "script": "build-linux-cmake-3.3.1.sh",
         "install_dir": "linux-cmake-wx-3.3.1",
         "source_dir": "wxWidgets-3.3.1-linux-cmake"
+      }
+    }
+,
+    {
+      "name": "android-arm64-v8a-3.3.1.tar.gz",
+      "size": "581M",
+      "sha256": "8ce6764b96cf746114a04f843e27b2f2d626294cc6c1f33c70a4d44d3378ad86",
+      "components": {
+        "script": "build-android-arm64-v8a-3.3.1.sh",
+        "install_dir": "android-arm64-v8a-wx-3.3.1",
+        "source_dir": "wxWidgets-3.3.1-android-arm64-v8a"
       }
     }
 
